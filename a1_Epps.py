@@ -62,7 +62,7 @@ class End2EndCalculation:
         plt.legend()
 
         plt.gca().invert_xaxis()
-        plt.gca().set_xscale('log')
+        # plt.gca().set_xscale('log')
 
         mng = plt.get_current_fig_manager()
         mng.resize(*mng.window.maxsize())
@@ -77,7 +77,7 @@ if __name__ == "__main__":
 
     e2e = End2EndCalculation()
 
-    try:
+    if len(sys.argv) == 2:
         input_overhead = int(sys.argv[1])
         e2e.calculate_delay(overhead=input_overhead)
         # Uncomment proceeding lines to show graph for end-to-end delay
@@ -96,5 +96,5 @@ if __name__ == "__main__":
         plt.show()
 
     # On error (No system args), the program will display the assignment-specific values.
-    except:
+    else:
         e2e.display_Plots()
